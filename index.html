@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Calculator</h1>
+        </header>
+
+        <!-- Sidebar (Instructions) -->
+        <div class="sidebar">
+            <h2>Instructions</h2>
+            <p>This is a simple calculator that supports the following operations:</p>
+            <ul>
+                <li><strong>Addition:</strong> Adds two numbers.</li>
+                <li><strong>Subtraction:</strong> Subtracts the second number from the first.</li>
+                <li><strong>Multiplication:</strong> Multiplies two numbers.</li>
+                <li><strong>Division:</strong> Divides the first number by the second.</li>
+            </ul>
+        </div>
+
+        <!-- Main Content (Calculator) -->
+        <main>
+            <input type="text" id="numInput" disabled placeholder="0">
+
+            <div class="button-grid">
+                <button onclick="appendToInput('7')">7</button>
+                <button onclick="appendToInput('8')">8</button>
+                <button onclick="appendToInput('9')">9</button>
+                <button onclick="appendToInput('/')">/</button>
+                
+                <button onclick="appendToInput('4')">4</button>
+                <button onclick="appendToInput('5')">5</button>
+                <button onclick="appendToInput('6')">6</button>
+                <button onclick="appendToInput('*')">*</button>
+
+                <button onclick="appendToInput('1')">1</button>
+                <button onclick="appendToInput('2')">2</button>
+                <button onclick="appendToInput('3')">3</button>
+                <button onclick="appendToInput('-')">-</button>
+
+                <button onclick="appendToInput('0')">0</button>
+                <button onclick="clearInput()">C</button>
+                <button onclick="calculateResult()">=</button>
+                <button onclick="appendToInput('+')">+</button>
+            </div>
+        </main>
+
+        <!-- Advertisement Section -->
+        <div class="ads">
+            <h2>Check Out These Calculators!</h2>
+            <a href="https://www.amazon.com/dp/B07PZV6T4R" target="_blank">
+                <img src="https://via.placeholder.com/200x100.png?text=Calculator+1" alt="Amazon Calculator 1">
+            </a>
+            <a href="https://www.amazon.com/dp/B07XL5ZXG5" target="_blank">
+                <img src="https://via.placeholder.com/200x100.png?text=Calculator+2" alt="Amazon Calculator 2">
+            </a>
+            <a href="https://www.amazon.com/dp/B07Q5Q8KNG" target="_blank">
+                <img src="https://via.placeholder.com/200x100.png?text=Calculator+3" alt="Amazon Calculator 3">
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Last updated: <span id="lastModified"></span></p>
+        </footer>
+    </div>
+
+    <script type="text/javascript">
+        var x = document.lastModified;
+        document.getElementById('lastModified').textContent = x;
+
+        function appendToInput(value) {
+            var inputField = document.getElementById('numInput');
+            if (inputField.value === '0') {
+                inputField.value = value;
+            } else {
+                inputField.value += value;
+            }
+        }
+
+        function clearInput() {
+            document.getElementById('numInput').value = '0';
+        }
+
+        function calculateResult() {
+            var inputField = document.getElementById('numInput');
+            try {
+                inputField.value = eval(inputField.value);
+            } catch (e) {
+                inputField.value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>
